@@ -1,12 +1,19 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= article.description %>
-  </p>
-
-</div>
+<article id="<%= dom_id article %>">
+  <!-- article header-->
+  <header class="mb-4">
+    <!-- article title-->
+    <h1 class="fw-bolder mb-1"><%= article.title %></h1>
+    <!-- article meta content-->
+    <div class="text-muted fst-italic mb-2">Actualizado el <%= article.updated_at.strftime("%d/%m/%Y") %> a las <%= article.updated_at.strftime("%H:%M") %> hrs. Autor: <%= article.user.email %></div>
+    <!-- article categories-->
+    <%# <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> %>
+  </header>
+  <!-- Preview image figure-->
+  <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
+  <!-- article content-->
+  <section class="mb-5">
+    <p class="fs-5 mb-4"><%= article.description %></p>
+    <%# < class="fs-5 mb-4"><%= article.content %>
+  </section>
+</article>

@@ -1,14 +1,10 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="mt-2 mb-2 text-center">Últimas Publicaciones</h1>
 
-<h1>Articles</h1>
-
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+<%= link_to "Nueva Publicación", new_article_path, class: "btn btn-success" %>
+<div class="col-lg-8 col-md-10 mx-auto">
+    <!-- Article content-->
+    <% @articles.each do |article| %>
+      <%= render article %>
+      <p><%= link_to "Ver más", article, class: "btn btn-primary" %></p>
+    <% end %>
 </div>
-
-<%= link_to "New article", new_article_path %>

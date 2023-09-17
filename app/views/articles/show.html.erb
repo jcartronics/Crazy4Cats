@@ -1,13 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "Back to articles", articles_path, class: "btn btn-primary my-1" %>
 
 <%= render @article %>
 
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
-</div>
+<% if user_signed_in? %>
+  <% if current_user.admin? || current_user == @article.user %>
+    <div>
+      <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-primary" %>
+      <%= button_to "Destroy this article", @article, method: :delete, data: { confirm: "Estas seguro?" }, class: "btn btn-danger my-2" %>
+    </div>
+  <% end %>
+<% end %>
 
 <h2>Comentarios:</h2>
 
