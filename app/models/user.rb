@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :articles
   has_many :comments
+
+  enum role: { user: 0, admin: 1 }
 end
