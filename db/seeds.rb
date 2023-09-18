@@ -26,9 +26,10 @@ count = 1
         user: user
     )
 
-    puts "Agregar imagen a Articulo #{count}"
-    file = URI.open(Faker::LoremFlickr.image(size: "300x300", search_terms: ['cat']))
-    article.image.attach(io: file, filename: "article_image_#{article.id}.jpg", content_type: 'image/jpg')
+    # Se deshabilita la creación de imágenes para evitar el consumo de recursos en el servidor
+    # puts "Agregar imagen a Articulo #{count}"
+    # file = URI.open(Faker::LoremFlickr.image(size: "300x300", search_terms: ['cat']))
+    # article.image.attach(io: file, filename: "article_image_#{article.id}.jpg", content_type: 'image/jpg')
 
 
     puts "Creando Comentario #{count}"
