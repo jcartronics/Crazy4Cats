@@ -11,6 +11,23 @@
   <% end %>
 <% end %>
 
+  <hr>
+
+<h2>Reacciones:</h2>
+
+<div class="btn-group" role="group">
+  <% Article::Kinds.each do |kind| %>
+    <% total_reactions = @article.reactions.where(kind: kind).count %>
+    <% user_reaction = current_user.reactions.find_by(article_id: @article.id, kind: kind) %>
+    
+    <% icon_class = Article::ReactionsIcons[kind] %>
+    <% button_class = user_reaction&.kind == kind ? "btn btn-success" : "btn btn-primary" %>
+
+    <%= button_to "<i class='#{icon_class}'></i> #{Article::KindsSpanish[kind]} (#{total_reactions})".html_safe, new_user_reaction_path(article_id: @article.id, reaction_type: kind, kind: kind), method: :post, class: button_class %>
+  <% end %>
+</div>
+
+
 <h2>Comentarios:</h2>
 
 <%= render "comments/comments" %>

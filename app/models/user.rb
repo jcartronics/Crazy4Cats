@@ -4,8 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :articles
+  # Associations
+  has_many :articles, dependent: :destroy
+  has_many :reactions
   has_many :comments
+
+  # Validations
 
   enum role: { user: 0, admin: 1 }
 end
